@@ -67,11 +67,6 @@ public class TaskServiceImpl implements TaskService {
         return repository.findAllByDescriptionContains(word);
     }
 
-    @Override
-    public List<Task> findAllBySubtaskName(String word) {
-        //TODO: add find by subtask name
-        return new ArrayList<>();
-    }
 
     @Override
     public List<Task> findAllOverdueTasks() {

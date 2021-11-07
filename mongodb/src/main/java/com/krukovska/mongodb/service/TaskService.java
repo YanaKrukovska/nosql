@@ -25,5 +25,4 @@ public interface TaskService {
 
     List<Task> findAllByDescription(String word);
 
-    List<Task> findAllBySubtaskName(String word);
 }
