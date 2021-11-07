@@ -26,19 +26,6 @@ public class MongodbApplication {
     @Bean
     CommandLineRunner init(TaskService taskService, SubtaskService subtaskService) {
 
-            /*
-    + Display on console all tasks.
-    + Display overdue tasks.
-    + Display all tasks with the specific category (query parameter).
-    ? Display all subtasks related to tasks with the specific category (query parameter).
-    + Insert task
-    + Update task
-    + Delete task
-    Perform insert/update/delete all subtasks of the given task (query parameter).
-    Support full-text search by word in task description.
-    Support full-text search by sub-task name.
-     */
-
         return args -> {
 
             // Clean up
@@ -48,8 +35,8 @@ public class MongodbApplication {
             populateTestData(taskService, subtaskService);
 
             printTaskResult("Display on console all tasks", taskService.findAllTasks());
-            printTaskResult("Display overdue tasks",  taskService.findAllOverdueTasks());
-            printTaskResult("Display all tasks with the specific category",  taskService.findAllTasksByCategory("Mentoring"));
+            printTaskResult("Display overdue tasks", taskService.findAllOverdueTasks());
+            printTaskResult("Display all tasks with the specific category", taskService.findAllTasksByCategory("Mentoring"));
 
             System.out.println("Display all subtasks related to tasks with the specific category");
             taskService.findAllSubtasksByCategory("Mentoring").forEach(System.out::println);
@@ -67,8 +54,6 @@ public class MongodbApplication {
             System.out.println();
 
             printTaskResult("Support full-text search by word in task description", taskService.findAllByDescription("tasks"));
-
-            printTaskResult("Support full-text search by sub-task name", taskService.findAllBySubtaskName("Task"));
 
         };
 
